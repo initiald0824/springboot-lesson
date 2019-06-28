@@ -30,4 +30,9 @@ public class UserController {
         return userJpa.save(entity);
     }
 
+    @RequestMapping(value = "delete", method = RequestMethod.GET)
+    public List<UserEntity> delete(Long id) {
+        userJpa.deleteById(id);
+        return userJpa.findAll();
+    }
 }
