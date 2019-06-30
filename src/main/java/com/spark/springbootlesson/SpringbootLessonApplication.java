@@ -11,6 +11,7 @@ public class SpringbootLessonApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringbootLessonApplication.class, args);
+        System.setProperty("tomcat.util.http.parser.HttpParser.requestTargetAllow","|{}");
     }
 
 }
