@@ -31,13 +31,27 @@ public class LoginController {
         boolean flag = true;
         String result = "登录成功";
         // 根据用户名查询用户是否存在
-        Optional<UserEntity> userEntity = userJpa.findOne(new Specification<UserEntity>() {
+        Optional<UserEntity> userEntityOptional = userJpa.findOne(new Specification<UserEntity>() {
             @Override
             public Predicate toPredicate(Root<UserEntity> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
                 criteriaQuery.where(criteriaBuilder.equal(root.get("name"), user.getName()));
                 return null;
             }
         });
-        return null;
+        if (userEntityOptional.isPresent()) {
+            UserEntity userEntity = userEntityOptional.get();
+            if (!userEntity.getPwd().equals(user.getPwd())) {
+                flag = false;
+                result = "用户密码不相符，登录失败";
+            }
+        } else {
+            flag = false;
+            result = "用户不存在，登录失败";
+        }
+        if (flag) {
+            // 将用户写入session
+            request.getSession().setAttribute("_session_user", userEntityOptional.get());
+        }
+        return result;
     }
 }
