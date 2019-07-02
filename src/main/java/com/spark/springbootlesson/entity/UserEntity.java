@@ -1,6 +1,8 @@
 package com.spark.springbootlesson.entity;
 
 
+import com.spark.springbootlesson.base.BaseEntity;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -10,7 +12,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "t_user")
-public class UserEntity implements Serializable {
+public class UserEntity extends BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
