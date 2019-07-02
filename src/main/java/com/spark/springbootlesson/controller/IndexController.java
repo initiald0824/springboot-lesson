@@ -26,7 +26,9 @@ public class IndexController {
 
     @RequestMapping(value = "index", method = RequestMethod.GET)
     public String index() {
+        logger.debug("记录debug日志");
         logger.info("访问了index方法");
+        logger.error("记录error错误日志");
         return "index";
     }
 }
