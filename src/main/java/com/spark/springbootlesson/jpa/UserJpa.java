@@ -1,6 +1,7 @@
 package com.spark.springbootlesson.jpa;
 
 import com.spark.springbootlesson.entity.UserEntity;
+import com.spark.springbootlesson.entity.UsersEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
